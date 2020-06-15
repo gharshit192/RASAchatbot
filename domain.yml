@@ -1,0 +1,97 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - issue
+  - facing_issues
+  - dentist
+  - dental_question
+  - severe_pain
+  - mild_pain
+  - cavity
+
+
+regex:
+  - email
+
+entities:
+  - name
+#  - email
+
+slots:
+  name:
+    type: unfeaturized
+  email:
+    type: unfeaturized
+
+responses:
+  utter_ask_name:
+  - text: "Please provide your name ?"
+  utter_ask_email:
+  - text: "Enter Your email ?"
+  utter_greet:
+  - text: "Hey! How are you?"
+  utter_issue:
+  - text: "Okay. Please tell me what issue you are facing?"
+    buttons:
+      - title: " Dentist"
+        payload: "utter_dentist"
+      - title: "Dental Question"
+        payload: "utter_dental_question"
+
+  utter_dentist:
+  - text: "What was happening in your teeth?"
+    buttons:
+      - title: "Mild Pain"
+        payload: "utter_mild_pain"
+      - title: "Severe Pain"
+        payload: "utter_severe_pain"
+  utter_dental_question:
+  - text: "As according to our experts team cavity, toothache, flos is happen due to eat too much sugar or not do properly brush.
+   For more query please visit our website{www.google.com}"
+  utter_cavity:
+  - text: "Do brush regularly. If there is more pain in your teeth Consult with the doctor"
+    buttons:
+      - title: "Visit Website"
+        link: "https://www.google.com/"
+  utter_mild_pain:
+  - text: "Go to nearest medical shop and buy it."
+  utter_severe_pain:
+  - text: "Immediate consult with some doctor are go to the dental hospital"
+
+  utter_facing_issues:
+  - text: "Okay.Sleep for 7-8 hours and don't tensed so much. Everything will be okay"
+  utter_submit:
+    - text: Your name is {name} and your email is {email}. Is this correct?
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+actions:
+  - action_hello_world
+  - utter_ask_name
+  - utter_ask_email
+  - utter_submit
+
+forms:
+  - form_info
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
